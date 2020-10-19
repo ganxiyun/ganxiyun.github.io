@@ -9,6 +9,8 @@ public class TimeDurationTest {
     public static void main(String[] args) {
         long sMillis = System.currentTimeMillis();
         Instant sInstant = Instant.now();
+        
+        // https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#nanoTime()
         long sNano = System.nanoTime();
         Stopwatch stopwatch = Stopwatch.createStarted();
 
