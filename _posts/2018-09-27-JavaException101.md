@@ -84,7 +84,7 @@ try {
 
 ## Throw/Catch Specific Exception Instead of Its Superclass
 
-**Don't Throw/Catch `Exception` and `Throwable`.**
+**Don't Throw/Catch `Exception` and `Throwable`.** (Definitely there are exceptional cases)
 
  {% highlight JAVA %}
 // Bad Case
@@ -112,7 +112,7 @@ public void useSpecificTryCatch() {
 {% endhighlight %}
 
  {% highlight JAVA %}
-// Good Case. This might be controversial. In real cases, developers just log each exception, therefore 
+// Good Case. It is a bit controversial. In many real cases, developers just log each exception, therefore 
 //     `try {} catch (IOException | TimeoutException ex) {}`
 // might be used.
 public void useSpecificTryCatch() { 
