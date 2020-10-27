@@ -12,13 +12,11 @@ Exception is fundamental knowledge in Java. However, someone analyzed half a mil
 
 ![What do developers do in exception catch blocks?](https://384uqqh5pka2ma24ild282mv-wpengine.netdna-ssl.com/wp-content/uploads/2018/02/instances.png)
 
-It's worthy to emphasize the usage of exceptions.
-
 <!--more-->
 
-# Kinds of Exception
+# Kinds of Exceptions
 
-[Exceptions in Java Language Specification] describes kinds of exceptions. We can see the figure to see the kinds of Exception. 
+[Exceptions in Java Language Specification] describes kinds of exceptions. See the following figure. 
 
 ![Exceptions in JLS](/assets/Exception_in_JLS.png)
 
@@ -130,7 +128,7 @@ public void useSpecificTryCatch() {
 
 ## Log Only When Exception is Handled
 {% highlight JAVA %}
-// Bad Case, because same exception might be logged many times (log here and the outer invokers),
+// Bad Case, the same exception might be logged many times (log here and the outer invokers),
 // which messes up the log and monitoring tool.
 try {
   // some routines which may throw CheckedException
