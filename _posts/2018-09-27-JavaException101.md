@@ -6,7 +6,7 @@ key: 2018-09-27-JavaException101
 ---
 
 # Overview
-The most fantastic usage of exception in Java I saw around 3 years ago is, a guy throws Exception in an inner loop in order to exit the outer loop.
+The most 'fantastic' usage of exception in Java I saw around 3 years ago is, a guy throws Exception in an inner loop in order to exit the outer loop.
 
 Exception is fundamental knowledge in Java. However, someone analyzed half a million Java projects in GitHub, the result shows the usage is not good.\[[1][Swallowed Exceptions: The Silent Killer of Java Applications]\]
 
@@ -21,7 +21,7 @@ Exception is fundamental knowledge in Java. However, someone analyzed half a mil
 ![Exceptions in JLS](/assets/Exception_in_JLS.png)
 
 1. `Exception` is the superclass of all the exceptions from which ordinary programs may `wish to recover`.
-2. `Error` is the superclass of all the exceptions from which ordinary programs are `not ordinarily expected to recover`.
+2. `Error` is the superclass of all the exceptions from which ordinary programs are `not ordinarily expected to recover`. For instance, `OutOfMemoryError`.
 3. `Checked Exception` must be handled, while `Unchecked Exception` is not.
 
 For example, when we invoke a method which may throw `Checked Exception`, we must surround with `try/catch` or add throw declaration. 
@@ -39,6 +39,18 @@ public void invoker() throws CheckedException {
   // some routines which may throw CheckedException
 }
 {% endhighlight %}
+
+## RuntimeException and Checked Exception
+
+There are debates for RuntimeException and checked Exception, for example [Should class IOException in Java have been an unchecked RuntimeException?]. The debate is going on. 
+
+Previously, I thought RuntimeException usually indicates the logical bug in our source code. I found [Exceptions in Java Language Specification] explains how designers of the Java programming language thought. 
+
+`The Java programming language requires that a program contains handlers for checked exceptions which can result from execution of a method or constructor.`
+
+`This compile-time checking for the presence of exception handlers is designed to reduce the number of exceptions which are not properly handled.`
+
+Simply speaking, exceptions in run-time which could not be checked at compile-time are designed to be `RuntimeException`.  See details in the [Exceptions in Java Language Specification].
 
 # Exception 101
 ## DON'T Swallow Exception
@@ -180,15 +192,21 @@ Some notorious exceptions (NullPointerException, OutOfMemoryError etc.) and corr
 
 \[2\] [Exceptions in Java Language Specification]
 
-\[3\] [The try-with-resources Statement]
+\[3\] [Should class IOException in Java have been an unchecked RuntimeException?]
 
-\[4\] [IOUtils.closeQuietly in Apache IOUtils]
+\[4\] [The try-with-resources Statement]
 
-\[5\] [95% of all usage of Closeable.closeQuietly is broken]
+\[5\] [IOUtils.closeQuietly in Apache IOUtils]
+
+\[6\] [95% of all usage of Closeable.closeQuietly is broken]
+
+
 
 [Swallowed Exceptions: The Silent Killer of Java Applications]:https://blog.takipi.com/swallowed-exceptions-the-silent-killer-of-java-applications/
 
 [Exceptions in Java Language Specification]:https://docs.oracle.com/javase/specs/jls/se7/html/jls-11.html
+
+[Should class IOException in Java have been an unchecked RuntimeException?]:https://stackoverflow.com/questions/2624145/should-class-ioexception-in-java-have-been-an-unchecked-runtimeexception
 
 [The try-with-resources Statement]:https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 
